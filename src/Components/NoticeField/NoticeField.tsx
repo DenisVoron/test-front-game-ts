@@ -7,7 +7,9 @@ const NoticeField: FC = (): JSX.Element => {
 
   return (
     <div className="container mx-auto">
-      <p className="w-56 mx-auto text-center">{resultData}</p>
+      <p className="w-96 py-9 mx-auto text-center text-2xl rounded-lg text-white font-bold bg-green-400 shadow-lg">
+        {resultData}
+      </p>
     </div>
   );
 };

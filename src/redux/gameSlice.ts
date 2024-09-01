@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../redux";
 import { INITIALSTRING, STARTINGNUMBER } from "./constants";
-
-interface IGameState {
-  startNum: number;
-  notice: string;
-}
+import { IGameState } from "../type";
 
 const initialState: IGameState = {
   startNum: STARTINGNUMBER,
@@ -16,16 +12,16 @@ export const gamingSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    updateNotice: (state, action: PayloadAction<string>) => {
-      console.log(state.startNum);
+    updateNotice: (state: IGameState, action: PayloadAction<string>) => {
       state.notice = action.payload;
+    },
+    updateStartNumber: (state: IGameState, action: PayloadAction<number>) => {
+      state.startNum = action.payload;
     },
   },
 });
 
-// type incrementType = typeof gamingSlice.actions.updateNotice.type;
-
-export const { updateNotice } = gamingSlice.actions;
+export const { updateNotice, updateStartNumber } = gamingSlice.actions;
 
 export const selectNotice = (state: RootState) => state.game.notice;
 export const selectStartNumber = (state: RootState) => state.game.startNum;
